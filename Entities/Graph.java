@@ -107,6 +107,18 @@ public class Graph {
         }
     }
 
+    public void positionRobot(Integer quant){
+        int vertice = 0;
+        double result = this.caminho.size()/quant;
+        System.out.println();
+        for(int i = 1; i <= quant;i++){
+            int aux = this.caminho.get(vertice)+1;
+            System.out.println("O Robô "+i+" inicia no vértice: "+aux);
+            vertice+=result;
+        }
+        System.out.println();
+    }
+
     public void printHamiltoniano(){
         if(this.isHalmitoniano){
             System.out.printf("\nO Grafo analisado é Hamiltoniano, Logo possui um Caminho que demonstra um Ciclo Hamiltoniano.\nO Caminho é : ");

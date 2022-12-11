@@ -44,12 +44,16 @@ public class Engine {
             System.out.println("Deseja Saber se o Grafo é Hamiltoniano?\n[0] - Não\n[1] - Sim");
             int Option = sc.nextInt();
             switch (Option) {
+                case 0:
+                    System.out.println();
+                    ctrl= false;
+                    break;
                 case 1:
                     grafo.functionHamiltoniano(0);
                     grafo.printHamiltoniano();
-                    ctrl= false;
-                    break;
-                case 2:
+                    if(grafo.getIsHalmitoniano()){
+                        robotAllocation(grafo);
+                    }
                     ctrl = false;
                     break;
                 default:
@@ -57,8 +61,29 @@ public class Engine {
                     break;
             }
         }
+    }
 
-
+    public void robotAllocation(Graph grafo){
+        boolean ctrl = true;
+        while(ctrl){
+            System.out.println("Deseja Adicionar Robôs ao Grafo?\n[0] - Não\n[1] - Sim");
+            int Option = sc.nextInt();
+            switch (Option) {
+                case 0:
+                    System.out.println();
+                    ctrl= false;
+                    break;
+                case 1:
+                    System.out.println("\nDigite a quantidade de Robôs: \nOBS (Quantidade Inferior ao Numéro de Vertices = "+grafo.getnVertices()+")");
+                    int quant = sc.nextInt();
+                    grafo.positionRobot(quant);
+                    ctrl = false;
+                    break;
+                default:
+                    System.out.println("Comando Inválido");
+                    break;
+            }
+        }
     }
 
 }
